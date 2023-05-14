@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Chat</string>
+    <array name="category">
+        <item>Sports</item>
+        <item>Movies</item>
+        <item>Musics</item>
+    </array>
+</resources>

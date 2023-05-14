@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.chat.ui.register.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:showIn="@layout/activity_register"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ui.register.RegisterActivity"
+        android:padding="10dp"
+        >
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="180dp"
+            errorMessage="@{vm.userNameError}"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="user name"
+                android:text="@={vm.userName}"
+                android:background="@color/transparent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/user_name"
+            android:layout_marginTop="90dp"
+            errorMessage="@{vm.emailError}">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="email"
+                android:text="@={vm.email}"
+                android:background="@color/transparent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/email"
+            android:layout_marginTop="90dp"
+            errorMessage="@{vm.passwordError}">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="password"
+                android:text="@={vm.password}"
+                android:background="@color/transparent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/password"
+            android:layout_marginTop="60dp"
+            errorMessage="@{vm.confirmPasswordError}"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="confirm password"
+                android:text="@={vm.confirmPassword}"
+                android:background="@color/transparent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/confirm_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="register"
+            android:backgroundTint="@color/babyblue"
+            android:layout_margin="20dp"
+            android:drawableEnd="@drawable/ic_next"
+            android:onClick="@{()->vm.register()}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account"
+            android:textSize="15sp"
+            android:textColor="@color/babyblue"
+            app:layout_constraintTop_toBottomOf="@id/register"
+            app:layout_constraintStart_toStartOf="@id/register"
+            app:layout_constraintEnd_toEndOf="@id/register"
+            android:layout_marginTop="50dp"
+            android:onClick="@{()->vm.goToLogin()}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

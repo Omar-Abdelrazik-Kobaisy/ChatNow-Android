@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.chat.ui.chat.ChatRoomViewModel" />
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.chat.ChatRoomActivity"
+        android:background="@drawable/chat_imge_bg"
+        android:padding="12dp">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:outlineSpotShadowColor="@color/transparent">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{vm.room.title}"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"
+                    tools:text="title"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_back"
+                    android:onClick="@{()->vm.goBack()}"
+                    />
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messages_recycerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:listitem="@layout/item_message"
+                app:layout_constraintBottom_toTopOf="@id/text_message"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHeight_percent="0.85"
+                />
+            <EditText
+                android:id="@+id/text_message"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/rounded_text_box"
+                android:elevation="@dimen/cardview_default_radius"
+                android:hint="input your message"
+                android:paddingStart="15dp"
+                android:layout_marginEnd="8dp"
+                android:text="@={vm.textMessage}"
+                app:layout_constraintHeight_percent="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/send_btn"
+                />
+            <ImageView
+                android:id="@+id/send_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_send"
+                android:background="@drawable/send_bg"
+                android:padding="8dp"
+                android:onClick="@{()->vm.sendMessage()}"
+                app:layout_constraintStart_toEndOf="@id/text_message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

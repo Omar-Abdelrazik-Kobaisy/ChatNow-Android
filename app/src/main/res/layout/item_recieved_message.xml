@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="message"
+            type="com.example.chat.db.models.Message" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/recevier_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{message.recieverName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="recieverName"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+
+        <TextView
+            android:id="@+id/message_recieved_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="this is message"
+            android:background="@drawable/recieved_message_background"
+            android:text="@{message.content}"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recevier_name"
+            android:padding="10dp"/>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{message.formateDateTime()}"
+            app:layout_constraintTop_toBottomOf="@id/message_recieved_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="3/3/2003"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

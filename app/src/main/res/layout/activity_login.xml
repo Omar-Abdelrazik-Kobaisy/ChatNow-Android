@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/chat_imge_bg"
+    >
+
+    <data>
+        <variable
+            name="viewm"
+            type="com.example.chat.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.login.LoginActivity"
+        >
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:outlineSpotShadowColor="@color/transparent"
+            android:background="@drawable/tool_bar_background"
+            >
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Sign In"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <include
+            layout="@layout/content_login"
+            app:vm="@{viewm}"
+            />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
